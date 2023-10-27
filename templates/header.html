@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">Tops Technologies</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Courses <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Python</a></li>
+                <li><a href="#">Java</a></li>
+                <li><a href="#">Flutter</a></li>
+              </ul>
+            </li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {% if request.session.email %}
+            <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span>Logout({{request.session.fname}})</a></li>
+            <li><a href="{% url 'change-password' %}"><span class="glyphicon glyphicon-edit"></span>Change Password</a></li>
+            <li><a href="{% url 'profile' %}"><img src="{{request.session.profile_pic}}" width="40px" height="40px"></a></li>
+            {% else %}
+            <li><a href="{% url 'signup' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            {% endif %}
+           
+          </ul>
+        </div>
+      </nav>
+
+      
+     {% block content %}
+     {% endblock %}
+     <center><a href="https://wa.me/+919429369656?text=I'm%20interested%20in%20your%20car%20for%20sale">
+      <img src="/static/whatsapp.png" alt="whatsapp" width="60px"></center>
+
+    </a>
+
+    <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/653a91c1f2439e1631e8c331/1hdmcinrq';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+</body>
+</html>
